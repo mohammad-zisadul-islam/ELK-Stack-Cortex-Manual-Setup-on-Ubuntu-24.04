@@ -5,4 +5,13 @@
 
 # ELK-Stack-Cortex-Manual-Setup-on-Ubuntu-24.04
 
-**This document explains how to perform a manual installation of the ELK Stack and Cortex on an Ubuntu 24.04.4 operating system. The purpose of this project is to manually set up a log management and security analysis system by utilizing the ELK stack and Cortex.**
+**This document explains how to perform a manual installation of the ELK Stack and Cortex on an Ubuntu 24.04.4 operating system. The purpose of this project is to manually set up a log management and security analysis system by utilizing the ELK stack and Cortex.  
+In this project, it is shown that the ELK stack can be installed and configured in order to have a log management tool as well as a Cortex to be used for incident response and observable analysis tasks.**
+
+
+## ⚙️ Project Workflow (Step-by-Step)
+1. Environment Preparation
+- Install Ubuntu 24.04.4 (VM or physical machine)
+- Update system packages
+
+
