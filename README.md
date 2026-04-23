@@ -10,8 +10,10 @@ In this project, it is shown that the ELK stack can be installed and configured 
 
 
 ## ⚙️ Project Workflow (Step-by-Step)
-
+<p align="center">
 <img width="680" height="339" alt="image" src="https://github.com/user-attachments/assets/f77da543-886d-4a89-acf8-42b3af5e7fff" />
+</p>
+
 
 1. Environment Preparation
 - Install Ubuntu 24.04.4 (VM or physical machine)
