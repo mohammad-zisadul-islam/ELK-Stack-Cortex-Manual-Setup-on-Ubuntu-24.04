@@ -78,7 +78,7 @@ sudo nano /etc/elasticsearch/jvm.options.d/jvm.options
 
 
 # Create a file path and this value past the file parh 
-### 4GB Ram consume in cortex 
+- 4GB Ram consume in cortex 
 
 ```bash
 -Dlog4j2.formatMsgNoLookups=true
@@ -108,7 +108,44 @@ script.allowed_types: "inline,stored"
 thread_pool.search.queue_size: 100000
 ```
 
-- Than Save and exit. Ctrl+x, enter y, enter 
+- Than Save and exit. Ctrl+x, enter y, enter
+
+## Status Chack 
+
+```bash
+sudo systemctl enable elasticsearch.service  
+sudo systemctl start elasticsearch.service  
+sudo systemctl status elasticsearch.service  
+sudo systemctl daemon-reexec  
+sudo systemctl restart elasticsearch  
+```
+
+- Cortex enable,start and status all is ok 
+
+## Chack status 
+```bash
+curl http://192.168.33.144:9200
+```
+### Status 
+```bash
+{
+  "name" : "test",
+  "cluster_name" : "Hive",
+  "cluster_uuid" : "uCKRUkcCRP6QskjnwZnApQ",
+  "version" : {
+    "number" : "8.19.14",
+    "build_flavor" : "default",
+    "build_type" : "deb",
+    "build_hash" : "f9adf4c29021dbda28cae7d9c11924471798723d",
+    "build_date" : "2026-04-02T15:09:12.561504739Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.12.2",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 
 
