@@ -93,7 +93,7 @@ sudo nano /etc/elasticsearch/jvm.options.d/jvm.options
 sudo nano /etc/elasticsearch/elasticsearch.yml
 ```
 
-### Delete in tihs path # 
+### Delete in tihs Path# 
 
 ```bash
 path.logs: "/var/log/elasticsearch"
@@ -108,7 +108,7 @@ script.allowed_types: "inline,stored"
 thread_pool.search.queue_size: 100000
 ```
 
-### Than Save and exit. Ctrl+x, enter y, enter 
+- Than Save and exit. Ctrl+x, enter y, enter 
 
 
 
