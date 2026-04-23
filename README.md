@@ -1,7 +1,7 @@
 
-**<p align="center">
+<p align="center">
   <img width="931" height="614" alt="thehive-logo" src="https://github.com/user-attachments/assets/75c4cba4-e280-4f4a-9b80-28e478111cad" />
-</p>**
+</p>
 
 # ELK-Stack-Cortex-Manual-Setup-on-Ubuntu-24.04
 
@@ -10,6 +10,9 @@ In this project, it is shown that the ELK stack can be installed and configured 
 
 
 ## ⚙️ Project Workflow (Step-by-Step)
+
+<img width="680" height="339" alt="image" src="https://github.com/user-attachments/assets/f77da543-886d-4a89-acf8-42b3af5e7fff" />
+
 1. Environment Preparation
 - Install Ubuntu 24.04.4 (VM or physical machine)
 - Update system packages
