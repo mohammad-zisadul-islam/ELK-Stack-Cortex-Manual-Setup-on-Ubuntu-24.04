@@ -93,7 +93,7 @@ sudo nano /etc/elasticsearch/jvm.options.d/jvm.options
 sudo nano /etc/elasticsearch/elasticsearch.yml
 ```
 
-### Delete in tihs Path# 
+### Edite the Path (Remove=#) 
 
 ```bash
 path.logs: "/var/log/elasticsearch"
