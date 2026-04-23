@@ -122,11 +122,11 @@ sudo systemctl restart elasticsearch
 
 - Cortex enable,start and status all is ok 
 
-## Chack status 
+## Chack Status in Tarminal
 ```bash
 curl http://192.168.33.144:9200
 ```
-### Status 
+### Output
 ```bash
 {
   "name" : "test",
@@ -146,6 +146,11 @@ curl http://192.168.33.144:9200
   "tagline" : "You Know, for Search"
 }
 ```
+
+### Chack Statis in Browser 
+<p align="center">
+<img width="1919" height="487" alt="Screenshot 2026-04-23 165920" src="https://github.com/user-attachments/assets/48877519-4f9e-4e68-9831-16a22aec55d4" />
+</p>
 
 
 
