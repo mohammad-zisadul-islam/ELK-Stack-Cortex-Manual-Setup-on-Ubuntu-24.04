@@ -1,6 +1,6 @@
-# ELK-Stack-Cortex-Manual-Setup-on-Ubuntu-24.04
-## Last Update Date: April 23, 2026  
-## Contex : Mohammad Zisadul islam
+# Cortex-Manual-Setup-on-Ubuntu-24.04
+- Last Update Date: April 23, 2026  
+- Contex : MOHAMMAD ZISADUL ISLAM
 
 **This document explains how to perform a manual installation of the ELK Stack and Cortex on an Ubuntu 24.04.4 operating system. The purpose of this project is to manually set up a log management and security analysis system by utilizing the ELK stack and Cortex.  
 In this project, it is shown that the ELK stack can be installed and configured in order to have a log management tool as well as a Cortex to be used for incident response and observable analysis tasks.**
@@ -108,7 +108,7 @@ script.allowed_types: "inline,stored"
 thread_pool.search.queue_size: 100000
 ```
 
-- Than Save and exit. Ctrl+x, enter y, enter
+- Than Save and exit. `Ctrl+x, enter y, enter`
 
 ## Status Chack 
 
@@ -131,12 +131,12 @@ curl http://192.168.33.144:9200
 {
   "name" : "test",
   "cluster_name" : "Hive",
-  "cluster_uuid" : "uCKRUkcCRP6QskjnwZnApQ",
+  "cluster_uuid" : "uCKR...........jnwZnApQ",
   "version" : {
     "number" : "8.19.14",
     "build_flavor" : "default",
     "build_type" : "deb",
-    "build_hash" : "f9adf4c29021dbda28cae7d9c11924471798723d",
+    "build_hash" : "f9adf4c2........................471798723d",
     "build_date" : "2026-04-02T15:09:12.561504739Z",
     "build_snapshot" : false,
     "lucene_version" : "9.12.2",
@@ -151,6 +151,130 @@ curl http://192.168.33.144:9200
 <p align="center">
 <img width="1919" height="487" alt="Screenshot 2026-04-23 165920" src="https://github.com/user-attachments/assets/48877519-4f9e-4e68-9831-16a22aec55d4" />
 </p>
+
+
+
+# Next step docker installation 
+```bash
+ . /etc/os-release curl -fsSL https://download.docker.com/linux/${ID}/gpg | sudo gpg --dearmor -o /usr/share/keyrings/dockerarchive-keyring.gpg echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/${ID} ${VERSION_CODENAME:-$UBUNTU_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list sudo apt update sudo apt install docker-ce 
+```
+
+## Cortex installation and configuration
+
+**Download DEB Package**
+
+```bash
+wget -O /tmp/cortex_4.0.0-1_all.deb https://cortex.download.strangebee.com/4.0/deb/cortex_4.0.0-1_all.deb
+```
+```bash
+sudo apt-get install /tmp/cortex_4.0.0-1_all.deb
+ 
+sudo dpkg -i /tmp/cortex_4.0.0-1_all.deb 
+```
+### Post Installation
+<p> Running analyzers & responders with Docker# If you plan to use Cortex with Analyzers & Responders running in Docker, ensure the cortex service account has appropriate permissions to interact with Docker </p>
+
+```bash
+ sudo usermod -aG docker cortex 
+```
+### Chack cortex version
+
+```bash
+$ cortex --version
+```
+**Setup a secret key for this instance**
+
+```bash
+cat > /etc/cortex/secret.conf << _EOF_ play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)" _EOF
+```
+
+### Verify 
+
+```bash
+root@attack:~# sudo cat /etc/cortex/secret.conf 
+play.http.secret.key="IVoulN4w05................................X2WoqEgzXG4PQLTbCvIysx"
+```
+
+
+
+
+## Modify the folder
+
+```bash
+$ sudo nano /etc/cortex/application.conf
+```
+**Add by line**
+
+`include "/etc/cortex/secret.conf"`
+
+```bash
+# IMPORTANT: If you deploy your application to several  instances,  make
+# sure to use the same key.
+#play.http.secret.keany="***CHANGEME***"
+include "/etc/cortex/secret.conf"
+
+## ElasticSearch
+search {
+  # Name of the index
+  index = cortex
+  # ElasticSearch instance address.
+  # For cluster, join address:port with ',': "http://ip1:9200,ip2:9200,ip3:9200"
+  uri = "http://192.168.33.144:9200"
+```
+
+
+# Start Cortex
+
+```bash
+sudo systemctl enable cortex
+sudo systemctl start cortex 
+sudo systemctl status cortex
+```
+
+### Chack cortex ui dashboard in browser 
+
+```bash
+http://192.168.33.144:9001/.
+```
+
+
+### Update an dashboard 
+
+- Loging : admin
+- User name : admin
+- Password : admin
+
+**Cortex manually setup complete**
+
+### UI
+
+### Your Cortex is Working 
+<p align="center">
+<img width="1286" height="603" alt="Screenshot 2026-04-24 001024" src="https://github.com/user-attachments/assets/3ecbdf5a-afbe-4555-aba6-1d28ab3e6509" />
+</p>
+
+
+
+
+
+<p align="center"> Test by zisad </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
